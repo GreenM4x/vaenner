@@ -1,0 +1,28 @@
+.container {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 1;
+  border-radius: 50%;
+  border: 1px solid #dbdbdb;
+  overflow: hidden;
+
+  /* Ultimate Fallback Styling */
+  background-color: aquamarine;
+  color: #333;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 14px;
+
+  /* Remove background if we successfully loaded an image/api avatar */
+  &.has-image {
+    background-color: transparent;
+  }
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+}

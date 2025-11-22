@@ -1,0 +1,6 @@
+<div class="container">
+  <!-- Updated to use the single [post] input -->
+  @for (post of postArray; track $index) {
+  <app-post-component [post]="post"></app-post-component>
+  }
+</div>

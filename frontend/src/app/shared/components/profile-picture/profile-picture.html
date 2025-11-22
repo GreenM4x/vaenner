@@ -1,0 +1,10 @@
+<div class="container" [class.has-image]="!!displaySrc">
+  <!-- Image: Shows provided URL or API Fallback -->
+  @if (displaySrc) {
+  <img [src]="displaySrc" alt="{{ user }}" (error)="handleError()" />
+  } @else if (!displaySrc) {
+  <span>
+    {{ user.charAt(0).toUpperCase() }}
+  </span>
+  }
+</div>

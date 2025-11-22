@@ -1,0 +1,13 @@
+.container {
+    /* Adjusted slightly to accommodate the fixed 375px width of your posts */
+    width: 100%;
+    max-width: 500px; /* Optional constraint */
+    
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centers the posts horizontally */
+    gap: 20px; /* Space between posts */
+    
+    margin: 0 auto; /* Centers the feed on the page */
+    padding-top: 20px;
+}

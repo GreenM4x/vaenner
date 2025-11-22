@@ -1,0 +1,122 @@
+.container {
+  width: 375px; 
+  height: 580px; 
+  background-color: #ffffff;
+  border: 1px solid #dbdbdb;
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  overflow: hidden;
+  margin-bottom: 20px;
+
+  /* --- HEADER --- */
+  .post-header {
+    height: 60px;
+    padding: 14px;
+    display: flex;
+    align-items: center;
+    border-bottom: 1px solid #efefef;
+    box-sizing: border-box;
+
+    /* Wrapper to control the size of your component */
+    .profile-wrapper {
+      width: 32px;
+      height: 32px;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+
+    .username-header {
+      font-size: 14px;
+      font-weight: 600;
+      color: #262626;
+      text-decoration: none;
+      
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+
+    .options-dots {
+      margin-left: auto;
+      cursor: pointer;
+      font-weight: bold;
+      padding-bottom: 5px;
+    }
+  }
+
+  /* --- IMAGE AREA --- */
+  .image-container {
+    width: 100%;
+    aspect-ratio: 1; 
+    background-color: #efefef;
+    overflow: hidden;
+    
+    .post-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover; 
+      display: block;
+    }
+  }
+
+  /* --- FOOTER & ACTIONS --- */
+  .footer {
+    padding: 10px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex-grow: 1;
+    
+    .action-bar {
+      display: flex;
+      gap: 16px;
+      margin-bottom: 4px;
+      
+      svg {
+        width: 24px;
+        height: 24px;
+        cursor: pointer;
+        transition: transform 0.1s;
+        
+        &:hover {
+          transform: scale(1.1);
+          stroke: #8e8e8e;
+        }
+      }
+    }
+
+    .likes-count {
+      font-weight: 600;
+      font-size: 14px;
+      color: #262626;
+    }
+
+    .caption {
+      font-size: 14px;
+      line-height: 18px;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      
+      .username-caption {
+        font-weight: 600;
+        margin-right: 6px;
+      }
+      
+      .caption-text {
+        color: #262626;
+      }
+    }
+    
+    .timestamp {
+      font-size: 10px;
+      color: #8e8e8e;
+      text-transform: uppercase;
+      margin-top: 4px;
+    }
+  }
+}
