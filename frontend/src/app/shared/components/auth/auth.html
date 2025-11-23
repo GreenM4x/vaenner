@@ -1,12 +1,14 @@
 <div class="auth-form">
   <h2>{{ mode === 'login' ? 'Login' : 'Register' }}</h2>
 
-  <input [(ngModel)]="email" placeholder="Email" type="email" />
-  <input [(ngModel)]="password" placeholder="Password" type="password" />
+  <!-- Nur anzeigen wenn wir im Register Mode sind -->
+  @if (mode === 'register') {
+  <input type="text" [(ngModel)]="username" placeholder="Username wählen" />
+  }
+  <input type="email" [(ngModel)]="email" placeholder="Email" />
+  <input type="password" [(ngModel)]="password" placeholder="Password" />
 
-  <button (click)="submit()">
-    {{ mode === 'login' ? 'Login' : 'Register' }}
-  </button>
+  <button (click)="submit()">{{ mode }}</button>
 
   <p (click)="toggleMode()" style="cursor: pointer; color: blue">
     {{ mode === 'login' ? 'No account? Register here' : 'Already have an account? Login' }}

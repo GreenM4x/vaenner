@@ -12,21 +12,23 @@ export class Auth {
   mode: 'login' | 'register' = 'login';
   email = '';
   password = '';
+  username = ''; // NEU
 
   constructor(private auth: AuthService) {}
 
   async submit() {
     try {
       if (this.mode === 'register') {
-        const user = await this.auth.signUp(this.email, this.password);
-        alert('User registered: ' + user!.id);
+        // Username übergeben
+        await this.auth.signUp(this.email, this.password, this.username);
+        alert('Registriert! Bitte einloggen.');
+        this.mode = 'login';
       } else {
-        const user = await this.auth.signIn(this.email, this.password);
-        alert('Logged in as: ' + user!.id);
+        await this.auth.signIn(this.email, this.password);
+        alert('Eingeloggt');
       }
-      // Nach Login/Register evtl. weiterleiten oder Feed laden
     } catch (e: any) {
-      alert(e.message || e);
+      alert(e.message);
     }
   }
 

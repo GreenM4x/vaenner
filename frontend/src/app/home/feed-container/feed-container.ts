@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { PostComponent } from '../../shared/components/post-component/postComponent';
 import { Ipost } from '../../shared/model/post.model';
+import { SupabaseService } from '../../shared/services/supabase.service';
 
 @Component({
   selector: 'app-feed-container',
@@ -8,48 +9,34 @@ import { Ipost } from '../../shared/model/post.model';
   templateUrl: './feed-container.html',
   styleUrl: './feed-container.scss',
 })
-export class FeedContainer {
-  // Updated to match the new 'Post' interface
-  postArray: Ipost[] = [
-    {
-      user: {
-        name: 'Max',
-        profileUrl: 'https://i.pravatar.cc/150?u=max',
-        gender: 'male',
-      },
-      caption: 'Refactoring the Angular structure to use dedicated models folder!',
-      imageUrl: 'https://picsum.photos/id/237/500/500',
-      likes: 60,
-    },
-    {
-      user: {
-        name: 'Lucas',
-        profileUrl: '',
-        gender: 'female',
-      },
-      caption: 'Testing the fallback logic for the profile picture.',
-      imageUrl: 'https://picsum.photos/id/10/500/500',
-      likes: 65,
-    },
-    {
-      user: {
-        name: 'Felix',
-        profileUrl: '',
-        gender: 'other',
-      },
-      caption: 'Look at this broken image link! The fallback works perfectly.',
-      imageUrl: 'https://picsum.photos/id/12/500/500',
-      likes: 8,
-    },
-    {
-      user: {
-        name: 'Bob123',
-        profileUrl: '',
-        gender: 'male',
-      },
-      caption: 'Almost weekend time! 🎉',
-      imageUrl: 'broken-image.png',
-      likes: 69,
-    },
-  ];
+export class FeedContainer implements OnInit {
+  postArray: Ipost[] = [];
+
+  constructor(private sb: SupabaseService) {}
+
+  ngOnInit() {
+    this.loadFeed();
+  }
+
+  async loadFeed() {
+    try {
+      const data = await this.sb.getFeed();
+
+      // Mapping: Supabase Antwort (snake_case) -> Dein Interface (camelCase)
+      if (data) {
+        this.postArray = data.map((post: any) => ({
+          user: {
+            // Wegen dem Join ist 'profiles' ein Objekt im Post
+            name: post.profiles?.username || 'Unbekannt',
+            profileUrl: post.profiles?.avatar_url || '',
+          },
+          caption: post.caption,
+          imageUrl: post.image_url, // Achte darauf, wie es in der DB heißt (image_url vs imageUrl)
+          likes: post.likes || 0,
+        }));
+      }
+    } catch (error) {
+      console.error('Fehler beim Laden des Feeds:', error);
+    }
+  }
 }

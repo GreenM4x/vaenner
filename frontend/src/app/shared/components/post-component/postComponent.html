@@ -3,11 +3,7 @@
   <div class="post-header">
     <!-- COMPONENT USAGE: Logic is now internal to ProfilePicture -->
     <div class="profile-wrapper">
-      <app-profile-picture
-        [user]="post.user.name"
-        [imageUrl]="post.user.profileUrl"
-        [gender]="post.user.gender"
-      >
+      <app-profile-picture [user]="post.user.name" [imageUrl]="post.user.profileUrl">
       </app-profile-picture>
     </div>
 

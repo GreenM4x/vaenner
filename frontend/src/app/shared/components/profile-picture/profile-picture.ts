@@ -10,7 +10,6 @@ import { createAvatar } from '@dicebear/core';
 })
 export class ProfilePicture implements OnChanges {
   @Input() user: string = 'User';
-  @Input() gender: 'male' | 'female' | 'other' = 'other';
   @Input() imageUrl?: string;
 
   displaySrc: string | null = null;

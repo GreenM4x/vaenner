@@ -4,5 +4,8 @@
   <input type="file" (change)="onFileChange($event)" />
   <input type="text" [(ngModel)]="caption" placeholder="Caption" />
 
-  <button (click)="createPost()">Post</button>
+  <button (click)="createPost()" [disabled]="isLoading">
+    <span *ngIf="!isLoading">Posten</span>
+    <span *ngIf="isLoading">Lade hoch...</span>
+  </button>
 </div>

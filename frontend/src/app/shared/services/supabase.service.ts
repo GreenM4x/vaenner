@@ -40,4 +40,23 @@ export class SupabaseService {
     if (error) throw error;
     return data;
   }
+
+  // NEU: Feed laden mit User-Daten
+  async getFeed() {
+    const { data, error } = await this.supabase
+      .from('posts')
+      .select(
+        `
+        *,
+        profiles (
+          username,
+          avatar_url
+        )
+      `
+      )
+      .order('created_at', { ascending: false });
+
+    if (error) throw error;
+    return data;
+  }
 }
