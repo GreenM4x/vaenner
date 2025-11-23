@@ -1,0 +1,8 @@
+<div class="create-post">
+  <h2>Neuen Post erstellen</h2>
+
+  <input type="file" (change)="onFileChange($event)" />
+  <input type="text" [(ngModel)]="caption" placeholder="Caption" />
+
+  <button (click)="createPost()">Post</button>
+</div>

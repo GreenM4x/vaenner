@@ -1,0 +1,10 @@
+{
+  "name": "vaenner",
+  "private": true,
+  "scripts": {
+    "frontend:start": "cd frontend && ng serve",
+    "frontend:build": "cd frontend && ng build",
+    "frontend:test": "cd frontend && ng test",
+    "frontend:lint": "cd frontend && ng lint"
+  }
+}

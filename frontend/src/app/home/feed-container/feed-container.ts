@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { PostComponent } from '../post-component/postComponent';
+import { PostComponent } from '../../shared/components/post-component/postComponent';
 import { Ipost } from '../../shared/model/post.model';
 
 @Component({
